@@ -1,23 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Personal Library</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    <form id="newBookForm" action="#">
-        <label for="first_name">Author</label>
-        <input type="text" name="Author" id="book_author">
-        <label for="first_name">Title</label>
-        <input type="text" name="Title" id="book_title">
-        <label for="first_name"># of Pages</label>
-        <input type="text" name="Number of Pages" id="book_numberOfPages">
-        <label for="first_name">READ?</label>
-        <input type="checkbox" name="Has been read?" id="book_readingStatus">
-        <button type="submit">New Book</button>
-    </form>
+    <button onclick="openAddBookPrompt()" id="addBookButton">Add Book</button>
+    <div id="formContainer">
+        <button onclick="closeAddBookPrompt()" id="closePoPUp">Cancel</button>
+        <form id="newBookForm" onsubmit="addBookToLibrary(event)">
+            <label for="book_author">Author</label>
+            <input type="text" name="book_author" id="book_author" required>
+
+            <label for="book_title">Title</label>
+            <input type="text" name="book_title" id="book_title" required>
+
+            <label for="book_numberOfPages"># of Pages</label>
+            <input type="number" name="book_numberOfPages" id="book_numberOfPages">
+
+            <label for="book_readingStatus">READ?</label>
+            <input type="checkbox" name="book_readingStatus" id="book_readingStatus">
+            <button type="submit">Add Book</button>
+        </form>
+    </div>
     <script src="script.js"></script>
 </body>
+
 </html>
