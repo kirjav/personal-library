@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Personal Library</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -26,6 +27,15 @@
             <input type="checkbox" name="book_readingStatus" id="book_readingStatus">
             <button type="submit">Add Book</button>
         </form>
+    </div>
+    <div class="bookCardContainer">
+        <div class="bookCard" id="bookCardPrefab">
+            <div class="readingStatus"></div>
+            <button class="removeBook">Remove Book</button>
+            <h1 class="title">Title</h1>
+            <div class="author">Author</div>
+            <div class="numberOfPages">420</div>
+        </div>
     </div>
     <script src="script.js"></script>
 </body>

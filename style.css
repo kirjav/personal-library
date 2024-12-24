@@ -1,7 +1,78 @@
+:root {
+    --accent-color:#333333;
+}
+
+
 * {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: "Roboto", sans-serif;
+    color: white;
+
+}
+
+body {
+    background-color: #1b1b1b
+}
+
+button {
+    color: black;
+}
+
+input {
+    color: black;
 }
 
 #formContainer {
     display: none;
+}
+
+.bookCardContainer {
+    height: 100%;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 10px;
+}
+
+.bookCard {
+    width: 300px;
+    height: 200px;
+    background-color: var(--accent-color);
+    border-radius: 8px;
+    box-shadow: 8px 8px 8px #131313;
+    display: grid;
+    overflow: hidden;
+    grid-template-columns: 10px 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+}
+
+.bookCard .readingStatus {
+    background-color: rgb(255, 0, 0);
+    grid-row: 1/4;
+    grid-column: 1;
+}
+
+.bookCard .title {
+    align-self: end;
+    grid-column: 2;
+}
+
+.bookCard .removeBook {
+    grid-column: 2;
+    grid-row: 3;
+    align-self: center;
+    width: 100px;
+}
+
+.bookCard .author {
+    grid-column: 2;
+}
+
+.bookCard .numberOfPages {
+    grid-row: 3;
+    justify-self: end;
+    align-self: center;
+    grid-column: 2;
 }
