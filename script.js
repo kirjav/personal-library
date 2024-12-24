@@ -10,7 +10,7 @@ function Book(author, title, numberOfPages, readingStatus, listIndex) {
     this.htmlElement = null;
     this.readingStatusDisplay = null;
 
-    this.info = function() {
+    this.info = function () {
         answer = this.title + " by " + this.author + ", " + this.numberOfPages + " pages, "
         answer += this.readingStatus ? " read" : " not read yet";
         return answer;
@@ -21,13 +21,13 @@ function Book(author, title, numberOfPages, readingStatus, listIndex) {
 function addBookToLibrary(event) {
     event.preventDefault();
     const form = event.target;
-    const newBook = new Book(form.book_author.value, form.book_title.value, form.book_numberOfPages.value, form.book_readingStatus.checked, (myLibrary.length-1))
+    const newBook = new Book(form.book_author.value, form.book_title.value, form.book_numberOfPages.value, form.book_readingStatus.checked, (myLibrary.length - 1))
     myLibrary.push(newBook);
     createBookCard(newBook);
     console.log(newBook.info());
 }
 
-function createBookCard(newBook){
+function createBookCard(newBook) {
     //Create Container Div
     const bookCard = document.createElement("div");
     bookCard.classList.add("bookCard");
@@ -36,7 +36,7 @@ function createBookCard(newBook){
     const removeBookButton = document.createElement("button");
     removeBookButton.classList.add("removeBook");
     removeBookButton.innerHTML = "Remove Book";
-    removeBookButton.onclick = function() {
+    removeBookButton.onclick = function () {
         removeBook(newBook);
     }
     bookCard.appendChild(removeBookButton);
@@ -64,16 +64,24 @@ function createBookCard(newBook){
     pageNumberElement.innerHTML = newBook.numberOfPages;
     bookCard.appendChild(pageNumberElement);
 
+    // Toggle read Button
+    const toggleReadingStatus = document.createElement("button");
+    toggleReadingStatus.classList.add("toggleReadingStatus");
+    toggleReadingStatus.innerHTML = "x";
+    toggleReadingStatus.onclick = function () {
+        changeReadingStatus(newBook);
+    }
+    bookCard.appendChild(toggleReadingStatus);
 
     newBook.htmlElement = bookCard;
 }
 
-function openAddBookPrompt(){
+function openAddBookPrompt() {
     const div = document.getElementById("formContainer");
     div.style.display = "block";
 }
 
-function closeAddBookPrompt(){
+function closeAddBookPrompt() {
     const div = document.getElementById("formContainer");
     const form = document.getElementById("newBookForm");
     form.reset();
@@ -81,10 +89,13 @@ function closeAddBookPrompt(){
 
 }
 
-function removeBook(book){
+function removeBook(book) {
     console.log("Removing " + book.title);
     book.htmlElement.remove();
 }
 
-// Basically I will create a preset container that I can read and copy and append. 
-// //It's display will be none but when i add a gbook ill fix that
+function changeReadingStatus(book) {
+    book.readingStatus = book.readingStatus ? false : true;
+    book.readingStatusDisplay.style.backgroundColor = book.readingStatus ? "green" : "red";
+    console.log(book.readingStatus);
+}
